@@ -2,16 +2,13 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyBLxi5F6YAEM1yh5g8TlNRLQArrdzhBl-I",
-  authDomain: "med4u-aa52f.firebaseapp.com",
-  projectId: "med4u-aa52f",
-  storageBucket: "med4u-aa52f.firebasestorage.app",
-  messagingSenderId: "207799322712",
-  appId: "1:207799322712:web:81dacce1ea3f560defa22d"
-};
+const base64 = import.meta.env.VITE_FIREBASE_CONFIG_BASE64;
+const firebaseConfig = JSON.parse(atob(base64));
 
 const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
 export const db = getFirestore(app);
+export { app };
+
+
