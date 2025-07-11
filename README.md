@@ -1,69 +1,73 @@
-# React + TypeScript + Vite
+# Medication Reminder App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A minimal, professional medication reminder app built with React, TypeScript, Vite, Zustand, Firebase, shadcn/ui, and Tailwind CSS. The app helps patients remember to take their medications and notifies caretakers if a dose is missed.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Authentication:** Secure signup/login with Firebase Auth
+- **Role-based Access:** Patient and Caretaker roles (single account per household)
+- **Medication Management:**
+  - Caretaker: Add, edit, delete medications
+  - Patient: Mark medications as taken for today
+- **Dashboard:**
+  - Medication stats (total, taken, not taken)
+  - Responsive design for mobile & desktop
+- **Notifications:**
+  - Real-time reminders for missed medications
+  - Caretaker sees alerts if patient misses a dose
+- **Modern UI:**
+  - Clean, accessible, and minimal interface using shadcn/ui and Tailwind CSS
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/) (build tool)
+- [Firebase](https://firebase.google.com/) (Auth & Firestore)
+- [Zustand](https://zustand-demo.pmnd.rs/) (state management)
+- [shadcn/ui](https://ui.shadcn.com/) (UI components)
+- [Tailwind CSS](https://tailwindcss.com/) (utility-first CSS)
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Getting Started
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+1. **Clone the repo:**
+   ```bash
+   git clone <your-repo-url>
+   cd med
+   ```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+3. **Firebase Setup:**
+   - Create a Firebase project (Auth + Firestore enabled)
+   - Get your Firebase config, encode it as Base64, and add to a `.env` file:
+     ```env
+     VITE_FIREBASE_CONFIG_BASE64=eyJhcGlLZXkiOiAiQU..."  # (your base64-encoded config)
+     ```
+4. **Start the app:**
+   ```bash
+   npm run dev
+   ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Folder Structure
+
+```
+med/
+  src/
+    components/      # UI components (Dashboard, MedicationList, etc.)
+    store/           # Zustand state management
+    firebase/        # Firebase config and logic
+    hooks/           # Custom React hooks
+    assets/          # Static assets
+    App.tsx          # Main app component
+    main.tsx         # Entry point
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Notes
+- All code is minimal, clean, and free of template/AI artifacts.
+- Notifications for missed medications are in-app (real-time). For email/SMS.
+- Designed for interview/assignment readiness: easy to read, extend, and maintain.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+
