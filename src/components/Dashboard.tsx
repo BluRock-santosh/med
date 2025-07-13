@@ -12,8 +12,9 @@ import { useMedicationReminders } from '@/hooks/useMedicationReminders';
 import { MedicationNotifications } from './MedicationNotifications';
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 
+
 export default function Dashboard() {
-  const { user, isPatient, isCaretaker, logout } = useUserStore();
+  const { user, isCaretaker, logout } = useUserStore();
   const { 
     medications, 
     loading, 
