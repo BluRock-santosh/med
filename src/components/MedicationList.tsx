@@ -6,7 +6,7 @@ import { useUserStore } from '@/store/userStore';
 import { useMedicationStore } from '@/store/medicationStore';
 import type { Medication } from '@/types/medication';
 import type { UserRole } from '@/types/user';
-import { CheckCircle, Clock, Trash2, Edit } from 'lucide-react';
+import { CheckCircle, Clock, Trash2 } from 'lucide-react';
 
 interface MedicationListProps {
   medications: Medication[];
